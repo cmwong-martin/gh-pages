@@ -1,0 +1,50 @@
+name:               "CHI MAN WONG"
+description:        "A passionate CS master student in deep learning"
+
+url:                ""
+author:             "CHI MAN WONG"
+email:              "wongchiman.martin@gmail.com"
+gravatar_hash:      "205e460b479e2e5b48aec07710c08d50"
+email:              "wongchiman.martin@gmail.com"
+github:             "cmwong-martin"
+
+
+disqus_shortname:   "CHI MAN WONG"
+
+background:         "http://apple.wallpapersfine.com/wallpapers/original/1242x2208/w-5273.jpg"
+
+paginate:           10
+paginate_path:      "/page:num/"
+
+baseurl:            "/gh-pages"
+permalink:          /:year/:month/:day/:title/
+
+markdown:           kramdown
+
+nav:
+  - name:           "Home"
+    href:           ""
+  - name:           "About"
+    href:           "/about"
+
+sass:
+  style:            :compressed
+
+defaults:
+  -
+    scope:
+      path:         ""
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      path:         ""
+      type:         "posts"
+    values:
+      layout:       "post"
+
+gems:
+  - jekyll-paginate
+
+future: true

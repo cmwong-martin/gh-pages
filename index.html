@@ -1,0 +1,42 @@
+---
+layout: default
+---
+<header class="bloghead">
+    <h2 class="bloghead-title">
+      {{ site.name }}<span>&#39;s blog</span>
+  </h2>
+  <p></p>
+    <nav class="bloghead-nav">
+        {% for nav in site.nav %}
+        <a href="{{site.baseurl}}{{ nav.href }}">{{ nav.name }}<span> &nbsp;/&nbsp; </span></a> {% endfor %}
+    </nav>
+    <hr>
+</header>
+<div class="content">
+    {% if site.posts.size == 0 %}
+    <h2>No post found</h2> {% else %} {% for post in paginator.posts %}
+
+    <div class="post-list">
+      <span class="post-date">
+          {{ post.date | date_to_string }} &nbsp
+      </span>
+
+        <h3 class="post-title" style="display: inline;">
+          <a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>
+    </h3> {% if post.description %}
+        <p>{{ post.description }}</p>
+        {% endif %}
+    </div>
+    {% endfor %} {% if paginator.total_pages > 1 %}
+    <div class="pages">
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><</a>
+      {% endif %}
+
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">></a>
+      {% endif %}
+    </div>
+    {% endif %}
+  {% endif %}
+</div>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<channel>
+		<title>CHI MAN WONG</title>
+		<link>http://localhost:4000</link>
+		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>Dual Learning Mechanism - train your translation model without any human labelling</title>
+        <description>&lt;h3 id=&quot;problem&quot;&gt;Problem&lt;/h3&gt;
+&lt;p&gt;It is very expensive to manually &lt;strong&gt;label tens of millions of bilingual sentence pairs&lt;/strong&gt; for training your machine-translation model.&lt;/p&gt;
+
+&lt;h3 id=&quot;proposed-method&quot;&gt;Proposed Method&lt;/h3&gt;
+&lt;p&gt;Consider the following two figures,&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;A model &lt;script type=&quot;math/tex&quot;&gt;M1&lt;/script&gt; translates English sentence to target French sentence.
+  &lt;img src=&quot;/gh-pages/figure/dual_learning/fromEToF.png&quot; alt=&quot;example image&quot; class=&quot;center-image&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Another model &lt;script type=&quot;math/tex&quot;&gt;M2&lt;/script&gt; translates French sentence to target English sentence. &lt;img src=&quot;/gh-pages/figure/dual_learning/fromFToE.png&quot; alt=&quot;example image&quot; class=&quot;center-image&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The learning of the proposed method [1] is shown in the following steps, and given an English sentence &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;,&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;the model &lt;script type=&quot;math/tex&quot;&gt;M1&lt;/script&gt; translates &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; to French sentence &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;immediately, the model &lt;script type=&quot;math/tex&quot;&gt;M2&lt;/script&gt; translates &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt; to &lt;script type=&quot;math/tex&quot;&gt;x'&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;at last, the model &lt;script type=&quot;math/tex&quot;&gt;M1&lt;/script&gt; will check whether &lt;script type=&quot;math/tex&quot;&gt;x'&lt;/script&gt; equals to &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A reinforcement learning (i.e. policy gradient) is employed to train both &lt;script type=&quot;math/tex&quot;&gt;M1&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;M2&lt;/script&gt; simultaneously.&lt;/p&gt;
+
+&lt;h3 id=&quot;advantages&quot;&gt;Advantages&lt;/h3&gt;
+&lt;p&gt;The learning of the model is based on &lt;strong&gt;unlabel bilingual sentence pairs&lt;/strong&gt; which can be obtained massively.&lt;/p&gt;
+
+&lt;h3 id=&quot;disadvantages&quot;&gt;Disadvantages&lt;/h3&gt;
+&lt;p&gt;It is expected that using reinforcement learning for the proposed method is time-comsunimg.&lt;/p&gt;
+
+&lt;h3 id=&quot;result&quot;&gt;Result&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/gh-pages/figure/dual_learning/re1.png&quot; alt=&quot;example image&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/gh-pages/figure/dual_learning/re2.png&quot; alt=&quot;example image&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/gh-pages/figure/dual_learning/re3.png&quot; alt=&quot;example image&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Yingce Xia, Di He, Tao Qin, Liwei Wang, Nenghai Yu, Tie-Yan Liu, and Wei-Ying Ma, Dual
+learning for machine translation, CoRR abs/1611.00179 (2016).&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+				<pubDate>Tue, 20 Dec 2016 00:00:00 +0800</pubDate>
+				<link>http://localhost:4000/2016/12/20/duallearn/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/12/20/duallearn/</guid>
+			</item>
+		
+			<item>
+				<title>Light RNN - compress your RNN model from 80GB to 50MB</title>
+        <description>&lt;h3 id=&quot;problem&quot;&gt;Problem&lt;/h3&gt;
+&lt;p&gt;Large RNN model is common but it is &lt;strong&gt;infeasible&lt;/strong&gt; to&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;fit into the memory of GPU devices.&lt;/li&gt;
+  &lt;li&gt;host in mobile devices for efficient inferences.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+&lt;p&gt;Consider the ClueWeb dataset [1], the vocabulary contains over 10M words. Then, the size of the input embedding matrix will be &lt;strong&gt;~40GB&lt;/strong&gt;. And consider the output embedding matrix and those weights between hidden layers, the RNN model will be &lt;strong&gt;&amp;gt;80GB&lt;/strong&gt;, which is much exceeding the capacity of current GPU (8GB).&lt;/p&gt;
+
+&lt;h3 id=&quot;proposed-method&quot;&gt;Proposed Method&lt;/h3&gt;
+&lt;p&gt;Consider the Figure 1., the left table is the traditional representation of each vocabulary. The middle table is the proposed two-component representation [2] for each vocabulary.  The right one shows how each vocabulary shares two components: a row vector and a column vector.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/gh-pages/table/twoComponentTable.png&quot; alt=&quot;example image&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;advantages&quot;&gt;Advantages&lt;/h3&gt;
+&lt;p&gt;Using two-component representation to a vocabulary of &lt;script type=&quot;math/tex&quot;&gt;|V|&lt;/script&gt; unique words, only &lt;script type=&quot;math/tex&quot;&gt;2{\sqrt {|V|}}&lt;/script&gt; vectors are needed. Therefore, the proposed method only requires &lt;script type=&quot;math/tex&quot;&gt;2{\sqrt {|V|}}&lt;/script&gt; vectors to represent a vocabulary is far less than &lt;script type=&quot;math/tex&quot;&gt;|V|&lt;/script&gt; required by existing approaches.&lt;/p&gt;
+
+&lt;h3 id=&quot;disadvantages&quot;&gt;Disadvantages&lt;/h3&gt;
+&lt;p&gt;The architecture of the proposed RNN model is shown in Figure 2 Left. The RNN model now needs to model two components for a single hidden layer: row &lt;script type=&quot;math/tex&quot;&gt;X^r&lt;/script&gt; and column &lt;script type=&quot;math/tex&quot;&gt;X^c&lt;/script&gt;, leading to a more complex model.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/gh-pages/figure/twoComponentRNN.png&quot; alt=&quot;example image&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;result&quot;&gt;Result&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/gh-pages/table/twoComponentRNN2.png&quot; alt=&quot;example image&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/gh-pages/table/twoComponentRNN3.png&quot; alt=&quot;example image&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Pomikálek, Jan, Milos Jakubícek, and Pavel Rychlý. “Building a 70 billion word corpus of English from ClueWeb.” LREC. 2012.&lt;/li&gt;
+  &lt;li&gt;Xiang Li, Tao Qin, Jian Yang, and Tie-Yan Liu, Lightrnn: Memory and computation-efficient recurrent neural networks, CoRR abs/1610.09893 (2016).&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+				<pubDate>Thu, 15 Dec 2016 00:00:00 +0800</pubDate>
+				<link>http://localhost:4000/2016/12/15/lightrnn/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/12/15/lightrnn/</guid>
+			</item>
+		
+	</channel>
+</rss>

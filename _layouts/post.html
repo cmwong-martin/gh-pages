@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<header class="bloghead">
+<nav class="bloghead-nav">
+    {% for nav in site.nav %}
+    <a href="{{site.baseurl}}{{ nav.href }}">{{ nav.name }}<span> &nbsp;/&nbsp; </span></a> {% endfor %}
+</nav>
+</header>
+
+<div class="content post">
+  <p></p>
+  <h3 class="post-title" style="display: inline;">{{ page.title }}</h3>
+  <div class="post-date">
+    <time>{{ page.date | date_to_string }}</time>
+  </div>
+  <hr>
+  {{ content }}
+</div>
+
+
+<div id="related">
+  <h3>Related Posts</h3>
+    {% for post in site.related_posts limit:3 %}
+      <p>{{ post.date | date_to_string }} &raquo;<a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></p>
+    {% endfor %}
+</div>

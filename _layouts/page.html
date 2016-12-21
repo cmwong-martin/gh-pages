@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+{% include header.html %}
+
+<div class="content page">
+  <header class="bloghead">
+  <nav class="bloghead-nav">
+      {% for nav in site.nav %}
+      <a href="{{site.baseurl}}{{ nav.href }}">{{ nav.name }}<span> &nbsp;/&nbsp; </span></a> {% endfor %}
+  </nav>
+  </header>
+  <h1 class="page-title">{{ page.title }}</h1>
+  {{ content }}
+</div>
