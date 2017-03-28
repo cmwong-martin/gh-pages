@@ -56,7 +56,7 @@
 </ol>
 
 <h3 id="example">Example</h3>
-<p>Consider the ClueWeb dataset [1], the vocabulary contains over 10M words. Then, the size of the input embedding matrix will be <strong>~40GB</strong>. And consider the output embedding matrix and those weights between hidden layers, the RNN model will be <strong>&gt;80GB</strong>, which is much exceeding the capacity of current GPU (8GB).</p>
+<p>Consider ClueWeb dataset [1], the vocabulary contains over 10M words. Then, the size of the input embedding matrix will be <strong>~40GB</strong>. And consider the output embedding matrix and those weights between hidden layers, the RNN model will be <strong>&gt;80GB</strong>, which is much exceeding the capacity of current GPU (8GB).</p>
 
 <h3 id="proposed-method">Proposed Method</h3>
 <p>Consider the Figure 1., the left table is the traditional representation of each vocabulary. The middle table is the proposed two-component representation [2] for each vocabulary.  The right one shows how each vocabulary shares two components: a row vector and a column vector.</p>
