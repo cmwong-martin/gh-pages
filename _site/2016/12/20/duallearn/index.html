@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dual Learning Mechanism - train your translation model without any human labelling</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600">
+    <link href="/gh-pages/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/gh-pages/style.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for CHI MAN WONG" href="/gh-pages/feed.xml" />
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+</head>
+
+
+<body class="preload">
+    <div class="top"></div>
+    <div class="profile" style="background-image: url(http://apple.wallpapersfine.com/wallpapers/original/1242x2208/w-5273.jpg);">
+        <img src="/gh-pages/image.jpg" class="img-circle" />
+        <h3>CHI MAN WONG</h3>
+        <p>A passionate CS master student in deep learning</p>
+        <ul class="social">
+            
+            <a type="button" href="http://github.com/cmwong-martin">
+                <i class="fa fa-github"></i>
+            </a>
+                
+        </ul>
+    </div>
+    <div class="posts">
+        <header class="bloghead">
+<nav class="bloghead-nav">
+    
+    <a href="/gh-pages">Home<span> &nbsp;/&nbsp; </span></a> 
+    <a href="/gh-pages/about">About<span> &nbsp;/&nbsp; </span></a> 
+</nav>
+</header>
+
+<div class="content post">
+  <p></p>
+  <h3 class="post-title" style="display: inline;">Dual Learning Mechanism - train your translation model without any human labelling</h3>
+  <div class="post-date">
+    <time>20 Dec 2016</time>
+  </div>
+  <hr>
+  <h3 id="problem">Problem</h3>
+<p>It is very expensive to manually <strong>label tens of millions of bilingual sentence pairs</strong> for training your machine-translation model.</p>
+
+<h3 id="proposed-method">Proposed Method</h3>
+<p>Consider the following two figures,</p>
+
+<ol>
+  <li>A model <script type="math/tex">M1</script> translates English sentence to target French sentence.
+  <img src="/gh-pages/figure/dual_learning/fromEToF.png" alt="example image" class="center-image" /></li>
+  <li>Another model <script type="math/tex">M2</script> translates French sentence to target English sentence. <img src="/gh-pages/figure/dual_learning/fromFToE.png" alt="example image" class="center-image" /></li>
+</ol>
+
+<p>The learning of the proposed method [1] is shown in the following steps, and given an English sentence <script type="math/tex">x</script>,</p>
+
+<ol>
+  <li>the model <script type="math/tex">M1</script> translates <script type="math/tex">x</script> to French sentence <script type="math/tex">y</script>.</li>
+  <li>immediately, the model <script type="math/tex">M2</script> translates <script type="math/tex">y</script> to <script type="math/tex">x'</script>.</li>
+  <li>at last, the model <script type="math/tex">M1</script> will check whether <script type="math/tex">x'</script> equals to <script type="math/tex">x</script>.</li>
+</ol>
+
+<p>A reinforcement learning (i.e. policy gradient) is employed to train both <script type="math/tex">M1</script> and <script type="math/tex">M2</script> simultaneously.</p>
+
+<h3 id="advantages">Advantages</h3>
+<p>The learning of the model is based on <strong>unlabel bilingual sentence pairs</strong> which can be obtained massively.</p>
+
+<h3 id="disadvantages">Disadvantages</h3>
+<p>It is expected that using reinforcement learning for the proposed method is time-comsunimg.</p>
+
+<h3 id="result">Result</h3>
+
+<p><img src="/gh-pages/figure/dual_learning/re1.png" alt="example image" class="center-image" /></p>
+
+<p><img src="/gh-pages/figure/dual_learning/re2.png" alt="example image" class="center-image" /></p>
+
+<p><img src="/gh-pages/figure/dual_learning/re3.png" alt="example image" class="center-image" /></p>
+
+<h3 id="reference">Reference</h3>
+
+<ol>
+  <li>Yingce Xia, Di He, Tao Qin, Liwei Wang, Nenghai Yu, Tie-Yan Liu, and Wei-Ying Ma, Dual
+learning for machine translation, CoRR abs/1611.00179 (2016).</li>
+</ol>
+
+</div>
+
+
+<div id="related">
+  <h3>Related Posts</h3>
+    
+      <p>29 Mar 2017 &raquo;<a href="/gh-pages/2017/03/29/StructuralRNN/">Structural RNN - Modeling Spatio-Temporal Graphs</a></p>
+    
+      <p>28 Mar 2017 &raquo;<a href="/gh-pages/2017/03/28/PixelRNN/">Pixel RNN - predicts the pixels in an image</a></p>
+    
+      <p>15 Dec 2016 &raquo;<a href="/gh-pages/2016/12/15/lightrnn/">Light RNN - compress your RNN model from 80GB to 50MB</a></p>
+    
+</div>
+
+    </div>
+</body>
+<script type="text/javascript">
+    window.onload = function(){
+        document.getElementsByTagName("BODY")[0].classList.remove("preload");
+    }
+</script>
+</html>

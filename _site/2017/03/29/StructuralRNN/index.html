@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pixel RNN - predicts the pixels in an image</title>
+    <title>Structural RNN - Modeling Spatio-Temporal Graphs</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600">
     <link href="/gh-pages/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/gh-pages/style.css">
@@ -42,26 +42,29 @@
 
 <div class="content post">
   <p></p>
-  <h3 class="post-title" style="display: inline;">Pixel RNN - predicts the pixels in an image</h3>
+  <h3 class="post-title" style="display: inline;">Structural RNN - Modeling Spatio-Temporal Graphs</h3>
   <div class="post-date">
-    <time>28 Mar 2017</time>
+    <time>29 Mar 2017</time>
   </div>
   <hr>
   <h3 id="problem">Problem</h3>
-<p>To predict the pixels in an image. For example, if an image is occluded, PixelRNN will recover the occulded part within the image, as shown in the following:</p>
-
-<p><img src="/gh-pages/figure/PixelRNN/fig1.png" alt="example image" class="center-image" /></p>
+<p>Recurrent Neural network works well in time or sequence modeling, but spatial modeling. Structural RNN takes account into both spatial and temporal information of the data.</p>
 
 <h3 id="proposed-method">Proposed Method</h3>
-<p>Using two LSTMs for modeling two directions respectively: row and diagonal, as shown in the following:</p>
+<p>Each timestep to RNN is represented by a graph of different objects as shown in the following. Each objects will represent a node in RNN.</p>
 
-<p><img src="/gh-pages/figure/PixelRNN/fig2.png" alt="example image" class="center-image" /></p>
+<p><img src="/gh-pages/figure/structureRNN/fig2.png" alt="example image" class="center-image" /></p>
+
+<p><img src="/gh-pages/figure/structureRNN/fig1.png" alt="example image" class="center-image" /></p>
 
 <h3 id="advantages">Advantages</h3>
 <ol>
-  <li>model full dependencies between the collor channels.</li>
-  <li>model both spatially local and long-range correlations</li>
-  <li>produce sharp and coherent recovery</li>
+  <li>model spatial and temporal relationship</li>
+</ol>
+
+<h3 id="disadvantages">Disadvantages</h3>
+<ol>
+  <li>heavy annotation of the data may require</li>
 </ol>
 
 <h3 id="result">Result</h3>
@@ -73,7 +76,7 @@
 <h3 id="reference">Reference</h3>
 
 <ol>
-  <li>Oord, A. V. D., Kalchbrenner, N., &amp; Kavukcuoglu, K. (2016). Pixel recurrent neural networks. arXiv preprint arXiv:1601.06759.</li>
+  <li>Jain, A., Zamir, A. R., Savarese, S., &amp; Saxena, A. (2016). Structural-RNN: Deep learning on spatio-temporal graphs. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 5308-5317).</li>
 </ol>
 
 </div>
@@ -82,7 +85,7 @@
 <div id="related">
   <h3>Related Posts</h3>
     
-      <p>29 Mar 2017 &raquo;<a href="/gh-pages/2017/03/29/StructuralRNN/">Structural RNN - Modeling Spatio-Temporal Graphs</a></p>
+      <p>28 Mar 2017 &raquo;<a href="/gh-pages/2017/03/28/PixelRNN/">Pixel RNN - predicts the pixels in an image</a></p>
     
       <p>20 Dec 2016 &raquo;<a href="/gh-pages/2016/12/20/duallearn/">Dual Learning Mechanism - train your translation model without any human labelling</a></p>
     
